@@ -1,0 +1,53 @@
+{
+  "realm": "ent-sale",
+  "displayName": "ENT EST Salé",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "roles": {
+    "client": {
+      "ent-client": [
+        { "name": "admin", "description": "Administrateur de l'ENT" },
+        { "name": "enseignant", "description": "Enseignant" },
+        { "name": "etudiant", "description": "Étudiant" }
+      ]
+    }
+  },
+  "clients": [
+    {
+      "clientId": "ent-client",
+      "name": "ENT Client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "ent-client-demo-secret",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "fullScopeAllowed": true,
+      "redirectUris": ["http://localhost/*"],
+      "webOrigins": ["*"]
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "admin@ent-sale.local",
+      "firstName": "Admin",
+      "lastName": "ENT",
+      "credentials": [
+        { "type": "password", "value": "Admin@123", "temporary": false }
+      ],
+      "clientRoles": {
+        "ent-client": ["admin"]
+      }
+    }
+  ]
+}

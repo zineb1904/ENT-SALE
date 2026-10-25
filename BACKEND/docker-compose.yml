@@ -6,11 +6,12 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-    command: start-dev
+    command: start-dev --import-realm
     ports:
       - "8080:8080"
     volumes:
       - keycloak_data:/opt/keycloak/data
+      - ./keycloak/ent-sale-realm.json:/opt/keycloak/data/import/ent-sale-realm.json:ro
     networks:
       - ent-network
 

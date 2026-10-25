@@ -42,22 +42,36 @@ Chaque service d'API expose sa documentation interactive Swagger sur `/docs`.
 
 ## Lancer le projet
 
-Prérequis : [Docker](https://www.docker.com/) et Docker Compose.
+Prérequis : [Docker](https://www.docker.com/) (avec Docker Compose) et [Git](https://git-scm.com/).
 
 1. Cloner le dépôt :
    ```bash
    git clone https://github.com/zineb1904/ENT-SALE.git
    cd ENT-SALE/BACKEND
    ```
-2. Créer un fichier `.env` dans le dossier de chaque service (`ms-auth`, `ms-admin`, `ms-messaging`, `ms-upload`, `ms-download`, `ms-calendar`, `ms-notes`). Les variables disponibles sont dans le fichier `config.py` de chaque service.
-3. Démarrer l'ensemble :
+2. Créer le fichier `.env` de chaque service à partir du modèle `.env.example` :
    ```bash
-   docker compose up --build
+   # Linux, macOS ou Git Bash (Windows)
+   for s in ms-*; do cp "$s/.env.example" "$s/.env"; done
    ```
-4. Configurer Keycloak sur http://localhost:8080 (realm `ent-sale`, client `ent-client`), puis renseigner `KEYCLOAK_CLIENT_SECRET` dans les fichiers `.env`.
-5. Ouvrir http://localhost : l'accueil redirige vers la page de connexion.
+   ```powershell
+   # PowerShell (Windows)
+   Get-ChildItem -Directory ms-* | ForEach-Object { Copy-Item "$($_.FullName)\.env.example" "$($_.FullName)\.env" }
+   ```
+3. Démarrer l'ensemble (le realm Keycloak `ent-sale` est importé automatiquement) :
+   ```bash
+   docker compose up --build -d
+   ```
+4. Attendre 1 à 2 minutes (Keycloak et Cassandra démarrent lentement). Si `ms-upload` ou `ms-download` signalent une erreur Cassandra au premier lancement, redémarrez-les :
+   ```bash
+   docker compose restart ms-upload ms-download
+   ```
+5. Ouvrir http://localhost et se connecter avec le compte de démonstration : **admin** / **Admin@123**.
+6. Créer les autres comptes (enseignants, étudiants) depuis la page **Administration**.
 
-> **Projet de démonstration.** Les identifiants par défaut (Keycloak, MySQL, MinIO) et la clé JWT de `ms-auth/config.py` sont des valeurs de développement : ils doivent être changés avant toute mise en production.
+La console Keycloak est disponible sur http://localhost:8080 (compte `admin` / `admin`).
+
+> **Projet de démonstration.** Les identifiants par défaut (Keycloak, MySQL, MinIO, compte `admin`), le secret du client Keycloak et la clé JWT sont des valeurs de développement : ils doivent être changés avant toute mise en production. Les fichiers `.env` ne doivent jamais être publiés sur GitHub.
 
 ## Auteure
 
