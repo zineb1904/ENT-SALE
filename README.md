@@ -19,10 +19,10 @@ Les captures ci-dessous utilisent des données fictives.
 
 | | |
 |---|---|
-| ![Connexion](docs/screenshots/01-connexion.png) **Connexion** | ![Tableau de bord](docs/screenshots/06-tableau-de-bord-etudiant.png) **Tableau de bord (étudiant)** |
-| ![Administration](docs/screenshots/03-administration.png) **Administration des utilisateurs et des rôles** | ![Notes](docs/screenshots/07-mes-notes.png) **Relevé de notes (étudiant)** |
-| ![Notes enseignant](docs/screenshots/05-notes-enseignant.png) **Saisie des notes (enseignant)** | ![Calendrier](docs/screenshots/08-calendrier.png) **Calendrier** |
-| ![Messagerie](docs/screenshots/09-messagerie.png) **Messagerie** | ![Notifications](docs/screenshots/10-notifications.png) **Notifications** |
+| ![Connexion](01-connexion.png) **Connexion** | ![Tableau de bord](06-tableau-de-bord-etudiant.png) **Tableau de bord (étudiant)** |
+| ![Administration](03-administration.png) **Administration des utilisateurs et des rôles** | ![Notes](07-mes-notes.png) **Relevé de notes (étudiant)** |
+| ![Notes enseignant](05-notes-enseignant.png) **Saisie des notes (enseignant)** | ![Calendrier](08-calendrier.png) **Calendrier** |
+| ![Messagerie](09-messagerie.png) **Messagerie** | ![Notifications](10-notifications.png) **Notifications** |
 
 ## Architecture
 
